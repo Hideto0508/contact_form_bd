@@ -2,6 +2,31 @@
 $nickname = $_POST['nickname'];
 $email = $_POST['email'];
 $content = $_POST['content'];
+
+//1.データベースに接続する
+$host = 'localhost';
+$dbname ='phpkiso';
+$charset = 'utf8mb4';
+$user = 'root';
+$password = '';
+
+$dsn = "$host = 'localhost';
+$dbname ='phpkiso';
+$charsmysql:host=$host;dbname=$dbname;charset=$charset";
+$dbh = new PDO($dsn, $user, $password);
+
+//2.SQL文を実行する
+$sql = 'INSERT INTO `survey` (`nickname` , 
+`email`, `content` ) VALUES ("'. $nickname.
+'","'.$email.'", "'.$content.'")';
+
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+
+
+//3.データベースを切断する
+$dbh = null;
+
 ?>
 
 <!DOCTYPE html>
