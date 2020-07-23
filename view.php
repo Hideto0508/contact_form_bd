@@ -13,9 +13,8 @@ $stmt = $dbh->prepare($sql);
 $stmt->execute();
 $surveys = $stmt->fetchALL();
 
-var_dump($surveys);
-
-
+//var_dump($surveys);
+$dbh = null;
 
 
 ?>
@@ -27,11 +26,19 @@ var_dump($surveys);
     <title>Document</title>
 </head>
 <body>
-    <div class="container"></div>
+     for(){
 
-    <h2></h2>
-    <p></p>
-    <p></p>
+
+     }
+
+    <div class="container"></div>
+    <?php foreach($surveys as $survey): ?>
+
+    <h2><?= $survey['nickname'] ?></h2>
+    <p><?= $survey['email'] ?></p>
+    <p><?= $survey['content'] ?></p>
+
+    <?php endforeach; ?>
 
 </body>
 </html>
